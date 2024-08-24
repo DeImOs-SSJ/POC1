@@ -283,3 +283,32 @@ export const getNotarizations = async (): Promise<Notarization[] | null> => {
     return null;
   }
 };
+
+export const getNotarizedNfts = async (): Promise<Notarization[] | null> => {
+  try {
+    const token = localStorage.getItem("token");
+    console.log(token);
+    if (!token) {
+      throw new Error("No token found");
+    }
+
+    const resp = await fetch(BASE_URL + "/notarizations/tokens", {
+      method: "GET",
+      headers: {
+        content: "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (resp.status === 200) {
+      const json: Notarization[] = await resp.json();
+      console.log(json);
+      return json;
+    }
+
+    return null;
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+};

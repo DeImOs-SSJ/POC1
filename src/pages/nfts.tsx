@@ -18,7 +18,7 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
-import { getNotarizations } from "../apis";
+import { getNotarizedNfts } from "../apis";
 import { useToast } from "@/components/ui/use-toast";
 import { sendNft } from "../config/walletconnect";
 
@@ -63,7 +63,7 @@ export default function NFTPage() {
 
   const verify = async () => {
     try {
-      const res = await getNotarizations();
+      const res = await getNotarizedNfts();
       // console.log("test", res[0].nfts);
       setNfts(res[0].nfts);
 
