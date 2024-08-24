@@ -263,7 +263,7 @@ export const getNotarizations = async (): Promise<Notarization[] | null> => {
       throw new Error("No token found");
     }
 
-    const resp = await fetch(BASE_URL + "/notarizations/tokens", {
+    const resp = await fetch(BASE_URL + "/notarizations", {
       method: "GET",
       headers: {
         content: "application/json",
